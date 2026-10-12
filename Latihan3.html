@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran FUSHOU</title>
+    
+    <!-- Perbaikan Favicon (Gunakan nama file gambar di folder yang sama) -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Menghubungkan ke file CSS Anda -->
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <!-- Papan Mengambang (Floating Card) -->
+    <div class="floating-card">
+        <!-- Bagian Judul Marquee -->
+        <div class="marquee-container">
+            <h1>Pendaftaran Formulir animasi <em>FUSHOU</em></h1>
+        </div><br>
+        <!-- Bagian Form Disatukan di Dalam Satu Wadah yang Rapi -->
+        <div class="marquee-container">
+            <form>
+                <!-- NISN -->
+                <label for="NISN">NISN</label><br>
+                <input type="text" id="NISN" name="NISN" placeholder="Masukkan NISN"><br><br>
+            </form>
+        </div>
+    </div>
+    <div class="floating-card">
+        <div class="marquee-container">
+            <!-- Nama Lengkap -->
+            <form>
+                <label for="nama">Nama Lengkap</label><br>
+                <input type="text" id="nama" name="nama" placeholder="Masukkan Nama Lengkap"><br><br>
+            </form>
+        </div>
+    </div>
+    <div class="floating-card">
+        <div class="marquee-container">
+            <!-- Kelas -->
+            <form>
+                <label for="kelas">Kelas</label><br>
+                <select id="kelas" name="Kelas">
+                    <option value="">-- Pilih Kelas --</option>
+                    <option value="X">X</option>
+                    <option value="XI">XI</option>
+                    <option value="XII">XII</option>
+                </select><br><br>
+            </form>
+        </div>
+    </div>
+    <div class="floating-card">
+        <div class="marquee-container">
+            <!-- Jurusan (Checkbox) -->
+            <form>
+                <label>Jurusan:</label><br>
+                <input type="radio" id="akl" name="jurusan" value="AKL">
+                <label for="akl">AKL</label><br>
+            
+                <input type="radio" id="mplb" name="jurusan" value="MPLB">
+                <label for="mplb">MPLB</label><br>
+            
+                <input type="radio" id="tkjt" name="jurusan" value="TKJT">
+                <label for="tkjt">TKJT</label><br>
+            
+                <input type="radio" id="tkr" name="jurusan" value="TKR">
+                <label for="tkr">TKR</label><br><br>
+            </form>
+        </div>
+    </div>
+    <div class="floating-card">
+        <div class="marquee-container">
+            <!-- Tempat, Tanggal Lahir -->
+            <form>
+                <label for="tempat">Tempat, Tanggal Lahir</label><br>
+                <input type="text" id="tempat" name="tempat" placeholder="Tempat Lahir, contoh: Bekasi atau Tambun Utara"><br>
+                <input type="date" id="tanggal" name="tanggal"><br><br>
+            </form>
+        </div>
+    </div>
+    <div class="floating-card">
+        <div class="marquee-container">
+            <!-- Jenis Kelamin -->
+            <form>
+                <label>Jenis Kelamin:</label><br>
+                <input type="radio" id="laki" name="gender" value="Laki-laki">
+                <label for="laki">Laki-laki</label><br>
+            
+                <input type="radio" id="perempuan" name="gender" value="Perempuan">
+                <label for="perempuan">Perempuan</label><br><br>
+            </form>
+        </div>
+    </div>
+    <div class="floating-card">
+        <div class="marquee-container">
+            <!-- Alamat -->
+            <form>    
+                <label for="alamat">Alamat</label><br>
+                <input type="text" id="alamat" name="alamat" placeholder="Masukkan Alamat, contoh: Jln. Tambun Utara"><br><br>
+            </form>
+        </div>
+    </div>
+    <div class="floating-card">
+        <div class="marquee-container">
+            <!-- Email -->
+            <form>
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email" placeholder="Masukkan Email"><br><br>
+            </form>
+        </div>
+    </div>
+    <div class="floating-card">
+        <div class="marquee-container">
+            <!-- Tombol Submit -->
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Skrip Animasi Scroll (Intersection Observer) -->
+    <script>
+        const cards = document.querySelectorAll('.floating-card');
+
+        const observerOptions = {
+            root: null,
+            threshold: 0.25, // Papan aktif saat 15% bagiannya masuk layar
+            rootMargin: "0px 0px -40px 0px"
+        };
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active'); // Reset saat keluar dari layar
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            cardObserver.observe(card);
+        });
+    </script>
+</body>
+</html>
